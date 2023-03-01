@@ -21,7 +21,7 @@ module.exports =
           res.end(data)
         }
       });
-      return
+      return;
     }
     else if (req.url === "/allDogs") {
       fs.readFile("./utils/allDogs.html", "UTF8", (err, data) =>{
@@ -34,6 +34,7 @@ module.exports =
           res.end(data)
         }
       })
+      return;
     }
     else{
       res.writeHead(404, {"Content-Type":"text/plain"}) //cuendo no se ingresa una ruta valida, se envía mensaje de error 
