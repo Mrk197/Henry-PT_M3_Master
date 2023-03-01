@@ -1,4 +1,4 @@
-# HW 03: Promises | Ejercicios
+# **HW 03 Promises | Ejercicios**
 
 ## **🕒 Duración estimada**
 
@@ -28,7 +28,7 @@ Lee atentamente este **README** y realiza cada uno de los ejercicios.
 
 🔹 Para poder ejecutar los `test` de esta homework, es necesario que abramos la terminal ubicados dentro de la carpeta `01 - Exercises`.
 
-- Cuando te encuentres en esta carpeta, debes ejecutar el comando
+-  Cuando te encuentres en esta carpeta, debes ejecutar el comando
 
 ```bash
 npm install
@@ -54,14 +54,14 @@ npm run test:promises
 
 🔹 Dentro de la carpeta `01 - Exercises`, vas a encontrar la siguiente estructura:
 
-- Una carpeta llamada `poem-one`.
-- Una carpeta llamada `poem-two`.
-- Una carpeta llamada `tests`.
-- Una carpeta llamada `demo`.
-- Un archivo `exercise-one.js`.
-- Un archivo `exercise-two.js`.
-- Un archivo `utils.js`.
-- Y el archivo **README.md** que ahora mismo estás leyendo. 😙
+-  Una carpeta llamada `poem-one`.
+-  Una carpeta llamada `poem-two`.
+-  Una carpeta llamada `tests`.
+-  Una carpeta llamada `demo`.
+-  Un archivo `exercise-one.js`.
+-  Un archivo `exercise-two.js`.
+-  Un archivo `utils.js`.
+-  Y el archivo **README.md** que ahora mismo estás leyendo. 😙
 
 ---
 
@@ -139,18 +139,6 @@ npm run test:promises
 
    a. Con el método **exerciseUtils.promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
 
-   b. Por el momento ignora los errores.
-
-   c. Las promesas deben ser resueltas en orden y en serie, es decir, cada promesa se resuelve cuando la anterior haya terminado.
-
-   d. Por último debes loguear 'done' cuando todas las promesas hayan terminado.
-
-   e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
-
-3. Función problemC:
-
-   a. Con el método **exerciseUtils.promisifiedReadFile** debes loguear todos las stanzas que se encuentran en la carpeta **poem-two**.
-
    b. En este ejercicio debes tener en cuenta los errores.
 
    c. Las promesas deben ser resueltas en orden y en serie, es decir, cada promesa se resuelve cuando la anterior haya terminado.
@@ -159,7 +147,9 @@ npm run test:promises
 
    e. Asegúrate de testear el output de tus soluciones corriéndolos múltiples veces, para ver las posibilidades.
 
-4. Función problemD: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **exerciseUtils.promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
+**EJERCICIO EXTRA**
+
+Función problemC: Debes hacer una versión promisificada de fs.writeFile. Puedes tomar de base el método **exerciseUtils.promisifiedReadFile** del archivo **utils.js** para la resolución del ejercicio.
 
    a. Retorna una instancia de `Promise`, la cual recibe una función.
 
@@ -177,15 +167,15 @@ npm run test:promises
 
 ## **🧠 Recuerda que...**
 
-- El código asincrónico es no-determinístico (los resultados no pueden ser determinados antes de tiempo)
+-  El código asincrónico es no-determinístico (los resultados no pueden ser determinados antes de tiempo)
 
-- Llamar a **.then** siempre devuelve una nueva promesa.
+-  Llamar a **.then** siempre devuelve una nueva promesa.
 
-- Para evitar el **callback hell** devuelve un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena debe recibir ese valor.
+-  Para evitar el **callback hell** devuelve un valor o una promesa por un valor de un success handler, la siguiente parte de la cadena debe recibir ese valor.
 
-- No olvides manejar los errores en el asincronismo, puedes hacerlo pasando un segundo parámetro **error handler** al .then.
+-  No olvides manejar los errores en el asincronismo, puedes hacerlo pasando un segundo parámetro **error handler** al .then.
 
-- También puedes manejar todos los errores en el asincronismo utilizando **.catch**.
+-  También puedes manejar todos los errores en el asincronismo utilizando **.catch**.
 
 ---
 
@@ -193,9 +183,9 @@ npm run test:promises
 
 ## **🔎 Recursos adicionales**
 
-- Documentación [**Promises**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+-  Documentación [**Promises**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-- Documentación [**Bluebird**](http://bluebirdjs.com/docs/api/new-promise.html)
+-  Documentación [**Bluebird**](http://bluebirdjs.com/docs/api/new-promise.html)
 
 ---
 
@@ -203,4 +193,4 @@ npm run test:promises
 
 ¡Listo! Aprendiste a promisificar, manejar asincronismo y errores, ahora vamos a implementar estos conocimientos en nuestra aplicación de integración. ✨🚀
 
-Dirígete a la carpeta 📂 "02 - Integration" y continúa desarrollando la app de Rick & Morty 🤩 ---
+Dirígete a la carpeta 📂 "02 - Integration" y continúa desarrollando la app de Rick & Morty 🤩 
