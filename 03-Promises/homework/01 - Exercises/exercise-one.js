@@ -1,5 +1,7 @@
 "use strict";
 
+const { reject } = require("async");
+const { blue } = require("./utils");
 let exerciseUtils = require("./utils");
 
 let args = process.argv.slice(2).map(function (st) {
@@ -20,15 +22,35 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
+  /* exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
     exerciseUtils.blue(stanza2);
     exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
       exerciseUtils.blue(stanza3);
     });
-  });
+  }); */
 
   // promise version
   // Tu código acá:
+  console.log("PROMESA A");
+  const promisProblemA =  new Promise((resolve, reject) => {
+    resolve(exerciseUtils.promisifiedReadFile(file))
+
+  })
+  
+  const stanza2 = exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt");
+  
+
+  promisProblemA
+    /* .then(response => {
+      console.log(response); 
+    }) */
+    .then(RES => {
+      const stanza3 = exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt");
+      console.log(stanza3);
+      stanza3.then(poem3 => console.log(poem3))
+      
+    })
+    .catch(err => console.log(err))
 }
 
 function problemB() {
@@ -62,3 +84,6 @@ function problemC() {
   // promise version
   // Tu código acá:
 }
+
+
+problemA();
