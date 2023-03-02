@@ -22,35 +22,33 @@ args.forEach(function (arg) {
 
 function problemA() {
   // callback version
-  /* exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
+  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
     exerciseUtils.blue(stanza2);
     exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
       exerciseUtils.blue(stanza3);
     });
-  }); */
+  });
 
   // promise version
   // Tu código acá:
-  console.log("PROMESA A");
-  const promisProblemA =  new Promise((resolve, reject) => {
-    resolve(exerciseUtils.promisifiedReadFile(file))
-
-  })
-  
-  const stanza2 = exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt");
-  
-
+  /* const promisProblemA =  exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt");
   promisProblemA
-    /* .then(response => {
-      console.log(response); 
-    }) */
-    .then(RES => {
-      const stanza3 = exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt");
-      console.log(stanza3);
-      stanza3.then(poem3 => console.log(poem3))
-      
+    .then(response1 => {
+      console.log(exerciseUtils.blue(response1)); 
+      return exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt");
     })
-    .catch(err => console.log(err))
+    .then(response2 => {
+      console.log(exerciseUtils.blue(response2));
+      console.log('done');
+    })
+ */
+    exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt")
+      .then(stanza2 => exerciseUtils.blue(stanza2))
+    exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt") 
+      .then(stanza3 => 
+        {exerciseUtils.blue(stanza3)
+        console.log('done')}
+      )
 }
 
 function problemB() {
@@ -65,6 +63,9 @@ function problemB() {
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt")
+    .then(stanza4 => exerciseUtils.blue(stanza4))
+    .catch(err => exerciseUtils.magenta(new Error(err)))
 }
 
 function problemC() {
@@ -83,7 +84,10 @@ function problemC() {
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt")
+    .then(stanza3 => exerciseUtils.blue(stanza3))
+    .catch(err => exerciseUtils.magenta(new Error(err)))
+  exerciseUtils.promisifiedReadFile("poem-one/wrong-file-name.txt")
+    .then(stanza4 => exerciseUtils.blue(stanza4))
+    .catch(err => exerciseUtils.magenta(new Error(err)))
 }
-
-
-problemA();
