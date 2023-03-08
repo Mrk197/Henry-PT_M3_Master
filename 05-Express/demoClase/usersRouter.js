@@ -12,7 +12,14 @@ usersRouter.get("/", (req, res) => {
 })
 
 usersRouter.post("/", (req, res) => {
-    res.send("Estoy en el POST de Users")
+    console.log(req.body);
+    const {name, email, password} =req.body;
+    if (name && email && password) {
+        res.status(200).send("Datos completos")
+    }
+    else{
+        res.status(400).send("Faltan datos")
+    }
 })
 
 usersRouter.get("/:id", (req, res) => {

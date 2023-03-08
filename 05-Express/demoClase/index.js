@@ -10,6 +10,7 @@ server.use("/", (req,res, next) =>{
 });
 
 server.use(morgan("dev"));  //muestra en consola Ej.: GET /alumnos 404 5.724 ms - 146
+server.use(express.json()); //midleware de express para formatear en JSON a obj
 
 server.use("/users", usersRouter)
 // get /users
