@@ -33,7 +33,7 @@ server.post("/posts", (req, res) => {
               "No se recibieron los parámetros necesarios para crear la publicación",
           })); */
     }
-});
+})
 
 server.get("/posts", (req, res) =>{
     const {author, title} = req.query;
@@ -50,7 +50,7 @@ server.get("/posts", (req, res) =>{
               "No existe ninguna publicación con dicho título y autor indicado",
           })
     }
-});
+})
 
 server.get("posts/:author", (req, res) => {
     const {author} = req.params;
@@ -65,7 +65,7 @@ server.get("posts/:author", (req, res) => {
               "No existe ninguna publicación del autor indicado",
           });
     }
-});
+})
 
 server.put("/posts/:id", (req, res) =>{
     const id = req.params.id;
@@ -93,7 +93,24 @@ server.put("/posts/:id", (req, res) =>{
               "No se recibió el id correcto necesario para modificar la publicación",
           });
     }
-});
+})
+
+server.delete("/posts/:id", (req, res) => {
+    const {id} = params.id;
+    if (id) {
+        const newPublications = publications.filter(post => post.id !== id );
+        if (publications.length === newPublications.length) {
+            res.status(404).send({error: "No se recibió el id correcto necesario para eliminar la publicación"});
+        }
+        else{
+            publications = newPublications;
+            res.status(200).send({ success: true })
+        }
+    }   
+    else{
+        res.status(404).send({error: "No se recibió el id de la publicación a eliminar"});
+    }
+})
 
 //NO MODIFICAR EL CODIGO DE ABAJO. SE USA PARA EXPORTAR EL SERVIDOR Y CORRER LOS TESTS
 module.exports = { publications, server };
