@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const usersRouter = require("./usersRouter");
 
 const server = express();
 
@@ -8,19 +9,12 @@ server.use("/", (req,res, next) =>{
     next();
 });
 
-server.use(morgan("dev"));
+server.use(morgan("dev"));  //muestra en consola Ej.: GET /alumnos 404 5.724 ms - 146
 
-server.get("/", (req, res) => {
-    res.send("Todo ok, ruta /")
-});
-
-server.get("/users", (req, res) => {
-    res.send("Estamos en la ruta users")
-});
-
-server.get("/posts", (req, res) => {
-    res.send("Estamos en la ruta posts")
-});
+server.use("/users", usersRouter)
+// get /users
+// post /users
+// get /users/1
 
 server.listen("3001", () => {
     console.log("El servidor esta funcionando en el puerto 3001");
