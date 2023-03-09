@@ -9,6 +9,7 @@ const server = express();
 
 server.use(express.json());
 
+//ejercicio 1
 server.post("/posts", (req, res) => {
     const {author, title, contents} = req.body;
     if (author && title && contents) {
@@ -34,14 +35,13 @@ server.post("/posts", (req, res) => {
           })); */
     }
 })
-
+//ejercicio 2
 server.get("/posts", (req, res) =>{
     const {author, title} = req.query;
     console.log("AT ", author, title);
     const searchAutorTitle = publications.filter(post => post.author === author && post.title === title);
-    console.log(publications);
-    console.log("searchAutorTitle", searchAutorTitle);
-    if (searchAutorTitle !== []) {
+    if (searchAutorTitle) {
+        console.log("searchAutorTitle", searchAutorTitle);
         res.status(200).send(searchAutorTitle);
     }
     else{
@@ -51,24 +51,24 @@ server.get("/posts", (req, res) =>{
           })
     }
 })
-
+//ejercicio 3
 server.get("posts/:author", (req, res) => {
-    const {author} = req.params;
-    const autorSeach = publications.filter( post => post.author === author)
-    if(autorSeach){
+    const author = req.params.author;
+    console.log("params", params);
+    const autorSeach = publications.filter( post => post.author === author.toString)
+    if(autorSeach.length > 0){
         console.log("autorSeach",autorSeach);
         res.send(autorSeach);
     }
     else{
-        res.status(400).send({
-            error:
-              "No existe ninguna publicación del autor indicado",
-          });
+        res.status(400).send(JSON.stringify({
+            error: "No existe ninguna publicación del autor indicado",
+          }) );
     }
 })
-
+//ejercicio 4
 server.put("/posts/:id", (req, res) =>{
-    const id = req.params.id;
+    const {id} = req.params;
     if (id) {
         const {title, contents} = req.body;
         if (title && contents) {
@@ -94,9 +94,9 @@ server.put("/posts/:id", (req, res) =>{
           });
     }
 })
-
+//ejercicio 5
 server.delete("/posts/:id", (req, res) => {
-    const {id} = params.id;
+    const {id} = req.params;
     if (id) {
         const newPublications = publications.filter(post => post.id !== id );
         if (publications.length === newPublications.length) {
