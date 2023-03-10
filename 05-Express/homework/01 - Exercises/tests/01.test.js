@@ -5,7 +5,7 @@ const api = request(server);
 describe("01 | Ejercicios", () => {
   let id = 0;
 
-  xit("1 | POST a la ruta /posts agrega nueva publicación o un error si faltan datos", async () => {
+  it("1 | POST a la ruta /posts agrega nueva publicación o un error si faltan datos", async () => {
     const newPost = {
       id: ++id,
       author: "Author Test",
@@ -37,7 +37,7 @@ describe("01 | Ejercicios", () => {
     expect(publications).toContainEqual(newPost, newPost2);
   });
 
-  xit("2 | GET a la ruta /posts, si existen las querys 'author' y 'title', devuelve los posts que coincidan con ambas querys. En caso de que no exista, devuelve un error", async () => {
+  it("2 | GET a la ruta /posts, si existen las querys 'author' y 'title', devuelve los posts que coincidan con ambas querys. En caso de que no exista, devuelve un error", async () => {
     const response = await api
       .get("/posts")
       .query({ author: "Author Test", title: "Title Test" });

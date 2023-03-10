@@ -39,10 +39,19 @@ server.post("/posts", (req, res) => {
 server.get("/posts", (req, res) =>{
     const {author, title} = req.query;
     console.log("AT ", author, title);
-    const searchAutorTitle = publications.filter(post => post.author === author && post.title === title);
-    if (searchAutorTitle) {
+    
+    if (author && title) {
+        const searchAutorTitle = publications.filter(post => post.author === author && post.title === title);
         console.log("searchAutorTitle", searchAutorTitle);
-        res.status(200).send(searchAutorTitle);
+        if (searchAutorTitle.length) {
+            res.status(200).send(searchAutorTitle);
+        }
+        else{
+            res.status(400).send({
+                error:
+                  "No existe ninguna publicación con dicho título y autor indicado",
+              })
+        }
     }
     else{
         res.status(400).send({
@@ -55,15 +64,18 @@ server.get("/posts", (req, res) =>{
 server.get("posts/:author", (req, res) => {
     const author = req.params.author;
     console.log("params", params);
-    const autorSeach = publications.filter( post => post.author === author.toString)
-    if(autorSeach.length > 0){
+    const autorSeach = publications.filter( post => post.author === author)
+    if(autorSeach.length){
         console.log("autorSeach",autorSeach);
-        res.send(autorSeach);
+        res.status(200).json(autorSeach);
     }
     else{
-        res.status(400).send(JSON.stringify({
+        /* res.status(400).send(JSON.stringify({
             error: "No existe ninguna publicación del autor indicado",
-          }) );
+          }) ); */
+          res.status(400).json({
+            error: "No existe ninguna publicación del autor indicado",
+          });
     }
 })
 //ejercicio 4
