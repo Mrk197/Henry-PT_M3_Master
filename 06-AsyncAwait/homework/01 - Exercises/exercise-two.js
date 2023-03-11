@@ -30,6 +30,11 @@ async function problemA() {
 
   // async await version
   // Tu código acá:
+  const stanza1 = await exerciseUtils.promisifiedReadFile("poem-two/stanza-01.txt");
+  exerciseUtils.blue(stanza1);
+  const stanza2 = await exerciseUtils.promisifiedReadFile("poem-two/stanza-02.txt");
+  exerciseUtils.blue(stanza2);
+
 }
 
 async function problemB() {
@@ -46,6 +51,10 @@ async function problemB() {
 
   // async await version
   // Tu código acá:
+  filenames.forEach(async (file) =>{
+    const stanza = await exerciseUtils.promisifiedReadFile(file);
+    exerciseUtils.blue(stanza);
+  })
 }
 
 async function problemC() {
