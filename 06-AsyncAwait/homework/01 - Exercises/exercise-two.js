@@ -1,5 +1,6 @@
 "use strict";
 
+const { log } = require("async");
 let exerciseUtils = require("./utils");
 
 let args = process.argv.slice(2).map(function (st) {
@@ -54,7 +55,8 @@ async function problemB() {
   filenames.forEach(async (file) =>{
     const stanza = await exerciseUtils.promisifiedReadFile(file);
     exerciseUtils.blue(stanza);
-  })
+  });
+  console.log("done");
 }
 
 async function problemC() {
@@ -71,6 +73,11 @@ async function problemC() {
 
   // async await version
   // Tu código acá:
+  filenames.forEach(async (file) =>{
+    const stanza = await exerciseUtils.promisifiedReadFile(file);
+    exerciseUtils.blue(stanza);
+  });
+  console.log("done");
 }
 
 async function problemD() {
@@ -81,13 +88,15 @@ async function problemD() {
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
-  filenames.forEach((filename) => {
-    exerciseUtils.readFile(filename, function (err, stanza) {
-      exerciseUtils.blue(stanza);
-      if (err) exerciseUtils.magenta(new Error(err));
-    });
-  });
+  
 
   // async await version
   // Tu código acá:
+  try {
+    let randIdx = Math.floor(Math.random() * filenames.length);
+    filenames[randIdx] =  await exerciseUtils.promisifiedReadFile("wrong-file-name-" + (randIdx + 1) + ".txt");
+  } catch (error) {
+    exerciseUtils.magenta(new Error(error));
+  }
+  console.log("done"); 
 }
